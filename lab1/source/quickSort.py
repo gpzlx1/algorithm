@@ -1,5 +1,3 @@
-
-
 #range include beg and end
 def partition(array, beg, end):
     if beg >= end:
