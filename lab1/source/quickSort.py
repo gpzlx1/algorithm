@@ -33,9 +33,10 @@ def quickSort(array, beg, end):
     mid = partition(array, beg, end)
     quickSort(array, beg, mid - 1)
     quickSort(array, mid + 1, end)
+    return array
 
 if __name__ == "__main__":
     a = [100, 3, 4, 3, 2, 6, 10]
-    quickSort(a, 0, len(a) - 1)
+    a = quickSort(a, 0, len(a) - 1)
     print(a)
 

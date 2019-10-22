@@ -1,5 +1,3 @@
-
-
 def genMaxHeap(array, length):
     mid = int(length / 2)
     a = list(range(1, mid + 1))
@@ -31,6 +29,7 @@ def heapSort(array):
         length = length - 1
         array[length] ,array[0] = array[0], array[length]
         MAX_HEAPIFY(array, 1, length)
+    return array
 
         
 
