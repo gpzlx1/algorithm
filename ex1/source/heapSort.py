@@ -33,7 +33,3 @@ def heapSort(array):
 
         
 
-if __name__ == "__main__":
-    a = [12, 13, 12,21 ,12,7,4 ,2, 3]
-    heapSort(a)
-    print(a)

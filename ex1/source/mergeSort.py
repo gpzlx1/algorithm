@@ -27,8 +27,3 @@ def mergeSort(array, beg, end):
         
     return array
 
-if __name__ == "__main__":
-    sys.setrecursionlimit(15000)
-    a = [18,17,20,11,3100,12,-2,-87]
-    a = mergeSort(a, 0,  len(a)-1)
-    print(a)

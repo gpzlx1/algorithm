@@ -14,6 +14,3 @@ def countSort(array, k):
 
     return b
 
-if __name__ == "__main__":
-    countSort(a,500)
-    print(a)
