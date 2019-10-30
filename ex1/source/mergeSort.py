@@ -1,5 +1,8 @@
 import sys
-#reange inlcude ben end
+#array 待排序的数组
+#beg 数组array开始的位置(included)
+#mid 数值array归并的分界线
+#end 数组array借宿的位置(included)
 def merge(array, ben, mid, end):
     if ben >= end:
         return

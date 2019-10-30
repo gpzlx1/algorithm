@@ -1,4 +1,6 @@
-#range include beg and end
+#array 待排序的数组
+#beg 数组array开始的位置(included)
+#end 数组array借宿的位置(included)
 def partition(array, beg, end):
     if beg >= end:
         return beg
