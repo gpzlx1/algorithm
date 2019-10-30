@@ -22,11 +22,12 @@ def read_input(N):
             array[i] = (int(f.readline()))
     return array
 
-def sort_all(N):
-    input = read_input(N)
-    ret = {}
-    ret["origin"] = input
-
+def sort_all(N): # num of array = 2**N
+    input = read_input(N)  #读取待排序数据，input为python list
+    ret = {}     #python 字典
+    ret["origin"] = input   #初始数据
+    
+    #ret["merge_sort"][0] 存放排序结果 ret["merge_sort"][1] 存放排序所花时间，下同
     begin = time.time()
     ret["merge_sort"] = [ mergeSort(input.copy(), 0, len(input) - 1)  ]
     end = time.time()
