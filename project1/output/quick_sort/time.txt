@@ -1,0 +1,9 @@
+time cost of N = 3 : 6.67572021484375e-06 ms
+time cost of N = 5 : 1.7881393432617188e-05 ms
+time cost of N = 7 : 7.62939453125e-05 ms
+time cost of N = 9 : 0.00042128562927246094 ms
+time cost of N = 11 : 0.0021915435791015625 ms
+time cost of N = 13 : 0.0099945068359375 ms
+time cost of N = 15 : 0.047908782958984375 ms
+time cost of N = 2 : 3.5762786865234375e-06 ms
+time cost of N = 10 : 0.0009834766387939453 ms
