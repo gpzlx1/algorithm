@@ -69,7 +69,7 @@ if __name__ == '__main__':
         e, root = optimal_bst(p, q, key)
         t2 = time.time()
         timeTXT.writelines(str(t2-t1) + ' ms\n')
-        print(e[1][-1], end=' ')
+        print(e[1][-1], end=', ')
         print_tree(root, 1, key, 0)
         print()
     timeTXT.close()
