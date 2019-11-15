@@ -7,15 +7,15 @@ import LCS
 
 if __name__ == '__main__':
     size = readSize.readSize('input/size.txt')
-    
+    #每轮都会随机产生字符串，所以这里写入时为了保存，而不是读取
     inputA = open('input/inputA.txt','w')
     inputB = open('input/inputB.txt','w')
     timeTXT = open('output/time.txt', 'w')
     for key, value in size.items():
         for m,n in value:
-            str1 = createString.createString(m)
+            str1 = createString.createString(m) #产生指定长度的字符串
             str2 = createString.createString(n)
-            if(key == str('A')):
+            if(key == str('A')):                #将产生的字符串保存起来
                 inputA.writelines(str1+'\n')
                 inputA.writelines(str2+'\n')
             else:

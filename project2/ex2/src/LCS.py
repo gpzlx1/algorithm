@@ -25,7 +25,9 @@ def LCS(str1, str2):
     return b,c
 
 
-
+#b LCS产生的b
+#str1 字符串1
+#(x,y) root坐标
 def print_LCS(b,str1,x,y):
     if x == 0 or y == 0:
         return ''

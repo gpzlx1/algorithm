@@ -39,17 +39,22 @@ def optimal_bst(p,q,n):
 
     return e, root
 
+#根据optimal_bst产生的root矩阵输出先序遍历的树结构
+#table为 root 矩阵
+#begin 为开始的关键字下标
+#end 为结束的关键字下表
+#i 为伪关键字的序号
 
 def print_tree(table,begin,end, i):
-    root = int(table[begin][end])
-    print('k{}'.format(root),end=' ')
-    if root == begin:
-        print('d{}'.format(i),end=' ')
-        i = i + 1
-    else:
-        i = print_tree(table, begin, root-1, i)
+    root = int(table[begin][end])       #根据root表的性质，root[begin][end]即为关键字表从begin到end所对应的最优二叉搜索树的根节点
+    print('k{}'.format(root),end=' ')   #先序遍历输出根节点
+    if root == begin:                   #此时，此root节点没有关键字左子树，只有伪关键字左子树
+        print('d{}'.format(i),end=' ')  #输出此伪关键字节点
+        i = i + 1                       #i++, 指向下一个伪关键字节点
+    else:                               #还有关键字左子树，递归查询
+        i = print_tree(table, begin, root-1, i) 
     
-    if root == end:
+    if root == end:                     #对右子树分析，同理
         print('d{}'.format(i),end=' ')
         i = i + 1
     else:
