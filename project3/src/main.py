@@ -33,7 +33,6 @@ if __name__ == '__main__':
         print('extract')
         for i in range(EXTRACT[0]):
             min = operations.EXTRACT_MIN(heap)
-            #print(min)
             operations.CHECK(heap)
 
     

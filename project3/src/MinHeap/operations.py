@@ -62,14 +62,19 @@ def DELETE(A, i):
         return -9999
     A[i] = A[-1]
     del A[-1]
-    MIN_HEAPIFY(A, i)
-    p = PARENT(i)
-    x = i
-    while p >= 0 and A[p] > A[x]:
-        MIN_HEAPIFY(A, p)
-        x = p
-        p = PARENT(p)
-        
+
+    l = LEFT(i)
+    r = RIGHT(i)
+    length = length - 1
+    if (l < length and A[i] > A[l]) or  (r < length and A[i] > A[r]):
+        MIN_HEAPIFY(A, i)
+    else:
+        p = PARENT(i)
+        x =  i
+        while p >= 0 and A[p] > A[x]:
+            A[p], A[x] = A[x], A[p]
+            x = p
+            p = PARENT(x)
     return 0
 
 def CHECK(A):
