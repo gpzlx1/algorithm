@@ -168,11 +168,15 @@ class FibonacciHeap:
 
 
     def renewDegree(self, parent : FibonacciHeapNode, degree : int):
+        if parent is None:
+            return
         parent.degree = parent.degree - degree
         if parent.p is not None:
             self.renewDegree(parent.p, degree) 
 
     def cut(self, node : FibonacciHeapNode, parent : FibonacciHeapNode):
+        if parent is None:
+            return
         self.removeNode(node)
         self.renewDegree(parent, node.degree)
         if node == node.right:
@@ -186,6 +190,8 @@ class FibonacciHeap:
         self.addNode(node, self.min)
 
     def cascadingCut(self, node : FibonacciHeapNode):
+        if node is None:
+            return
         parent = node.p
         if parent is not None:
             return
