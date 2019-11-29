@@ -54,18 +54,24 @@ def DECREASE_KEY(A, i, k):
 def INSERT(A, k):
     A.append(k)
     DECREASE_KEY(A, len(A) - 1, k)
-    
+
+#此处的i为二叉堆中的元素,而不是元素所指向的关键字
 def DELETE(A, i):
     length = len(A)
     if i >= length:
         print("There is no element {}".format(i))
         return -9999
-    A[i] = A[-1]
+    A[i] = A[-1]        #将最后一个元素填充到i处，并删除最后一个元素
     del A[-1]
 
     l = LEFT(i)
     r = RIGHT(i)
     length = length - 1
+    #上诉操作完成后，有两种情况
+    #第一种情况是，当前A[i] 比 它们的孩子都要大，
+    #此时比如不满足二叉堆性质，所以要用MIN_HEAPIFY函数将此节点下沉
+    #第二种情况是，当时A[i]虽然比它的孩子小，但是A[i]的父亲比A[i]大，
+    #此时也不满足最小二叉堆性质，需要将A[i]和它的父亲交换
     if (l < length and A[i] > A[l]) or  (r < length and A[i] > A[r]):
         MIN_HEAPIFY(A, i)
     else:

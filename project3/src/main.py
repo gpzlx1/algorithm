@@ -107,7 +107,7 @@ if __name__ == '__main__':
             Fheap.delete(x)
             t2 = time.time()
             sum = sum + t2 - t1
-            
+
         ftime.writelines("{} \n".format(sum))  
 
         print('extract')
