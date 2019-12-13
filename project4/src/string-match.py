@@ -108,6 +108,7 @@ if __name__ == "__main__":
 	Rabin_karp_out = open("./output/Rabin-karp/output.txt", "w")
 	horspool_out = open("./output/horspool/output.txt", "w")
 	for T, P in input:
+		print(T.find(P))
 		map = get_map(T)
 
 		b = time.time()
