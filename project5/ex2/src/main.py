@@ -1,3 +1,4 @@
+from copy import deepcopy
 inf = float('inf')
 
 def relax(W, u, v, D, P):
@@ -19,9 +20,34 @@ def bellman_ford(G, s):
         if not changed:
             break
     else:
-        raise ValueError('negative cycle')
+        return False, False
     return D, P
 
+import random
+
+def correctGraph(G):
+    for u in G:
+        for v in G[u]:
+            if G[u][v] < 0:
+                if random.randint(0,1) == 1:
+                    G[u][v] = -G[u][v]
+    return G
+        
+def testGraph(G):
+    G = deepcopy(G)
+    s = 0
+    G[s] = {v: 0 for v in G}
+    D, _ = bellman_ford(G, s)
+    if type(D) != type(False):
+        del G[s]
+        return "Ok", G
+    while type(D) == type(False):
+        correctGraph(G)
+        D, _ = bellman_ford(G, s)
+
+    del G[s]
+    return "Corrected", G
+        
 
 from heapq import heappush, heappop
 
@@ -38,7 +64,7 @@ def dijkstra(G, s):
     return D, P
 
 
-from copy import deepcopy
+
 
 def johnson(G):
     G = deepcopy(G)
@@ -73,10 +99,42 @@ def readGraph(path : str, n : int):
             Graph[src][dst] = weight
     return Graph
 
+# u -> v
+def get_path(P, u, v):
+    if u == v:
+        return "{} -> {}".format(u, v)
+    if v not in P[u]:
+        return None
+    path = []
+    path.append(str(v))
+    k = P[u][v]
+    while k != u:
+        path.append(str(k))
+        k = P[u][k]
+    path.append(str(u))
+    path.reverse()
+    return " -> ".join(path)
+
+
+import time 
 N = [27, 81, 243, 729]
 if __name__ == "__main__":
+    out_time = "output/time.txt"
+    f_time = open(out_time, "w")
     for i in range(1, 5):
         for j in range(1, 3):
-            path = "input/input" + str(i) + str(j) +".txt"
+            path = "input/input" + str(i) + str(j) +".txt"         
             G = readGraph(path, N[i-1])
-            johnson(G)
+            status, G = testGraph(G)
+            print(status + " " + path)
+            b = time.time()
+            D, P = johnson(G)
+            e = time.time()
+            f_time.write("{} s\n".format(e-b))
+            with open( "output/result" + str(i) + str(j) +".txt",  "w") as f:
+                for u in D:
+                    for v in sorted(D[u]):
+                        if D[u][v] == inf:
+                            f.write("{}->{}\t( None, inf )\n".format(u,v))
+                        else:
+                            f.write("{}->{}\t( ".format(u,v) + get_path(P, u, v) + ", {} )\n".format(D[u][v]))
